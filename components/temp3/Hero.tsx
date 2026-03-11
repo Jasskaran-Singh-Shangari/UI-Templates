@@ -1,0 +1,125 @@
+"use client"
+import gsap from "@/lib/gsap"
+import { useGSAP } from "@gsap/react"
+import { SplitText } from "gsap/all"
+import { useRef } from "react"
+
+const Hero = () => {
+
+  const videoRef=useRef<HTMLVideoElement>();
+
+  useGSAP(()=>{
+    const heroSplit = new SplitText(".title", {type: 'chars'})
+    const paragraphSplit = new SplitText(".subtitle", {type: 'lines'})
+
+    heroSplit.chars.forEach((char) => char.classList.add("text-gradient"))
+
+    gsap.from(heroSplit.chars, {
+      y: "100%",
+      duration:1.8,
+      stagger: 0.06,
+      ease: "expo.out",
+      opacity:0,
+      filter: "blur(10px)"
+    })
+
+    gsap.from(paragraphSplit.lines, {
+      opacity:0,
+      y:"100%",
+      duration:1.8,
+      delay:1,
+      ease:"expo.out",
+      stagger:0.06
+    })
+
+    gsap.timeline({
+      scrollTrigger:{
+        trigger:"#hero",
+        start: "top top",
+        end:"bottom top",
+        scrub:true
+      }
+    })
+    .to(".right-leaf", {y: 200}, 0)
+    .to(".left-leaf", {y: -200}, 0)
+
+    const startValue = "center 60%";
+	  const endValue = "bottom top";
+
+    let tl = gsap.timeline({
+      scrollTrigger:{
+        trigger: "video",
+        start: startValue,
+        end: endValue,
+        scrub: true,
+        pin: true,
+      }
+    })
+    
+    const video = videoRef.current
+    if(!video) return
+
+    const addAnimation = () => {
+      tl.to(video, {
+        currentTime: videoRef.current.duration
+      })
+    }
+
+    if(video.readyState >= 1){
+      addAnimation()
+    }else{
+      video.onloadedmetadata = addAnimation
+    }
+
+  }, [])
+
+  return (
+    <>
+      <section id="hero" className="noisy">
+        <h1 className="title"> MOJITO </h1>
+
+        <img 
+          src="/images/hero-left-leaf.png" 
+          alt="left-leaf" 
+          className="left-leaf" 
+        />
+        <img 
+          src="/images/hero-right-leaf.png" 
+          alt="right-leaf" 
+          className="right-leaf" 
+        />
+
+        <div className="body">
+          <div className="content">
+            <div className="space-y-5 hidden md:block">
+              <p>Cool. Crisp. Classic.</p>
+              <p className="subtitle">
+                Sip the Spirit <br /> of Summer
+              </p>
+            </div>
+
+            <div className="view-cocktails">
+              <p className="subtitle">
+                Every cocktail on our menu is a blend of premium ingredients, creative flair, and timeless recipes <br /> - designed to delight your senses.
+              </p>
+              <a href="#cocktails"> View Cocktails </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div 
+      className="absolute inset-0"
+      >
+        <video
+        ref={videoRef} 
+        src="/videos/output.mp4"
+        muted
+        playsInline
+        preload="auto" />
+      </div>
+    </>
+  )
+}
+
+export default Hero;

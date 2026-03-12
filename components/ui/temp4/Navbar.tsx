@@ -89,7 +89,7 @@ const Navbar = () => {
                         </span>
                     </div>
                 </nav>
-                        <div className="full-nav h-[85vh] w-full absolute inset-x-0 top-0 bg-white">
+                        <div className="full-nav h-[85vh] w-full absolute inset-x-0 top-0 bg-white opacity-0">
                             {/* NAVIGATION */}
                             <nav className="flex items-center justify-between p-5 text-black">
                                 <div className="cursor-pointer space">

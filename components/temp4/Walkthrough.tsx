@@ -1,3 +1,4 @@
+import StaggeredText from "../ui/practiceUI/StaggeredText";
 
 
 const Walkthrough = () => {

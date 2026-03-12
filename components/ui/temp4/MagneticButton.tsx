@@ -6,14 +6,15 @@ import { LucideIcon } from "lucide-react";
 interface MagneticButtonProps{
     text?: string;
     icon?: LucideIcon;
-    onclick?: React.MouseEventHandler<HTMLButtonElement>;
+    onclick?: () => void;
+    className?: string
 }
 
-export default function MagneticButton({text, icon: Icon, onclick}: MagneticButtonProps) {
+export default function MagneticButton({text, icon: Icon, onclick, className}: MagneticButtonProps) {
 
   const buttonRef = useRef(null);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: any) => {
     const button = buttonRef.current;
     const rect = button.getBoundingClientRect();
 
@@ -43,7 +44,7 @@ export default function MagneticButton({text, icon: Icon, onclick}: MagneticButt
       onClick={onclick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="px-4 py-2 bg-neutral-100 text-neutral-500 rounded-full text-lg hover:bg-neutral-200 relative cursor-pointer"
+      className={`px-4 py-2 bg-neutral-100 text-neutral-500 rounded-full text-lg hover:bg-neutral-200 relative cursor-pointer ${className}`}
       style={{ fontFamily: "Jost" }}
     >
         {Icon && <Icon className="text-neutral-500Navba" />}

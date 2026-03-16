@@ -67,8 +67,6 @@ const Hero = () => {
             filter:"blur(0px)"
         })
 
-
-
         // MASK OPEN TIMELINE
         maskTimeline
         .to(titleSplit.chars[0], { xPercent:-200, duration:1, ease:"expo.inOut",delay:1.5})
@@ -102,12 +100,9 @@ const Hero = () => {
                 <video src="/videos/flow.mp4" autoPlay muted loop className="mask absolute -z-10 -translate-x-1/2 -translate-y-1/2 w-10 h-10 top-1/2 left-1/2 object-cover" />
                 <MagneticButton className="explore-button" onclick={()=>{exploreTimeline.current?.play()}} text="Start exploring" />
             </div>
-            <div className="content-expereince absolute inset-0 bg-transparent z-20 flex flex-col items-center justify-center opacity-0">
-
-               <MagneticButton icon={X} onclick={()=> {exploreTimeline.current?.reverse()}} className="bg-white p-5 rounded-full" />
+            <div className="content-expereince absolute inset-0 bg-transparent z-20 flex flex-col items-center justify-center opacity-0">   
+                <MagneticButton icon={X} onclick={()=> {exploreTimeline.current?.reverse()}} className="bg-white p-5 rounded-full" />
                     
-               
-                
                 <span
                 style={{
                     fontFamily: "Playfair Display"

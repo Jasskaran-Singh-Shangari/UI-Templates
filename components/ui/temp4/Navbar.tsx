@@ -72,7 +72,7 @@ const Navbar = () => {
     <div className="fixed top-0 z-20 w-full p-5 nav">
                 <nav className="flex items-center justify-between">
                     <div className="cursor-pointer space">
-                        <a href="/temp4" className="text-lg">
+                        <a href="/temp4" className="text-lg text-white mix-blend-difference">
                             去你的 (Space)
                         </a>
                     </div>

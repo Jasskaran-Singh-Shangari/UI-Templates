@@ -8,7 +8,6 @@ export default function Page() {
             <Navbar />
             <Hero />
             <SoundBar />
-            {/* <div className="h-screen bg-white"  */}
         </div>
     );
 }

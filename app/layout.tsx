@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Jost, Bebas_Neue, Noto_Serif_Display, Montserrat, Playfair_Display, Text_Me_One  } from "next/font/google";
+import { Geist, Geist_Mono, Jost, Bebas_Neue, Noto_Serif_Display, Montserrat, Playfair_Display, Text_Me_One, Space_Grotesk  } from "next/font/google";
 import "./globals.css";
 
 
@@ -47,6 +47,12 @@ const textMeOne = Text_Me_One({
   subsets: ["latin"],
 });
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
+});
+
 export const metadata: Metadata = {
   title: "UI Templates",
   description: "Making better templates",
@@ -60,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}
       >
         {children}
       </body>

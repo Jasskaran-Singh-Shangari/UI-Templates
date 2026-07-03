@@ -69,7 +69,7 @@ const Hero = () => {
 
         // MASK OPEN TIMELINE
         maskTimeline
-        .to(titleSplit.chars[0], { xPercent:-200, duration:1, ease:"expo.inOut",delay:1.5})
+        .to(titleSplit.chars[0], { xPercent:-200, duration:1, ease:"expo.inOut", delay:1.5})
         .to(titleSplit.chars[2], { xPercent:200, duration:1, ease:"expo.inOut"}, "<")
         .fromTo(".mask", {opacity:0, width:"0%", height:"0%", skewX:-70}, {opacity:1, width:"100%", height:"100%", duration:1.5, ease: "expo.out", skewX:0},"-=0.5")
         .to(".sub-title",{opacity:1, duration:1, ease:"expo.out"}, "<")

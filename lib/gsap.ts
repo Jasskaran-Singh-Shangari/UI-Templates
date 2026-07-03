@@ -6,6 +6,6 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText)
-gsap.registerPlugin(Draggable);
+gsap.registerPlugin(Draggable)
 
 export default gsap;
